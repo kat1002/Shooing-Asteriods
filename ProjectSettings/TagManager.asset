@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Playground
+    uniqueID: 3843265233
+    locked: 0
+  - name: Earth
+    uniqueID: 603880083
+    locked: 0
+  - name: Gun
+    uniqueID: 3457001161
+    locked: 0
+  - name: Base
+    uniqueID: 289875289
+    locked: 0
+  - name: Environment
+    uniqueID: 755608895
+    locked: 0

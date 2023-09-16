@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float timeBetweenFiring;
     [SerializeField] private float power;
 
+    [SerializeField] private Animator gunAnimator;
+
     private Vector2 direction;
     private float timer;
     private bool canFire = true;
@@ -16,7 +18,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
                 timer = 0;
                 canFire = true;
             }
+            gunAnimator.SetBool("Shoot", false);
         }
 
         if (Input.GetMouseButton(0) && canFire) { 
@@ -47,10 +49,14 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = ObjectPool.Instance.GetPooledBullet();
 
             if (bullet != null) { 
+                gunAnimator.SetBool("Shoot", true);
+                
                 bullet.transform.position = shootingPivot.position;
                 bullet.GetComponent<Bullet>().startingPosition = shootingPivot.position;
+                bullet.GetComponent<Bullet>().Setup(direction);
                 bullet.SetActive(true);
                 bullet.GetComponent<Rigidbody2D>().AddForce(direction.normalized * power, ForceMode2D.Impulse);
+               
             }
         }
     }

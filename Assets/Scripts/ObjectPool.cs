@@ -12,6 +12,9 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bulletPrefabs;
     [SerializeField] private GameObject enemyPrefabs;
+    [SerializeField] private GameObject particlePrefabs;
+
+    private GameObject explosion;
 
     private void Awake()
     {
@@ -24,10 +27,16 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+    public GameObject GetParticle() {
+        return explosion;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < amountToPool; ++i)
+        explosion = Instantiate(particlePrefabs);
+
+        for (int i = 0; i < amountToPool; ++i)
         {
             GameObject bullet = Instantiate(bulletPrefabs);
             bullet.SetActive(false);
@@ -61,4 +70,5 @@ public class ObjectPool : MonoBehaviour
 
         return null;
     }
+
 }

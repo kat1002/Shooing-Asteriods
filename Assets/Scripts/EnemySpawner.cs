@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemy != null)
         {
-            Debug.Log(spawnPos);
+            //Debug.Log(spawnPos);
             enemy.transform.position = spawnPos;
             enemy.SetActive(true);
         }

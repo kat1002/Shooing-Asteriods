@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public static UIController Instance { get; private set; }
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject endMenu;
 
     private void Awake()
     {
@@ -26,5 +27,9 @@ public class UIController : MonoBehaviour
     public void UpdateScore()
     {
         scoreText.text = GameController.Instance.Score.ToString();
+    }
+
+    public void EndGame() { 
+        endMenu.SetActive(true);
     }
 }

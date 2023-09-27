@@ -23,8 +23,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AimRotation();
-        Shoot();
+        if (!(GameController.Instance.isPaused || GameController.Instance.isEnded))
+        {
+            AimRotation();
+            Shoot();
+        }
     }
 
     void AimRotation() {
